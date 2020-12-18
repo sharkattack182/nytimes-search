@@ -50,3 +50,6 @@ $("#search").on("click", function() {
     })
 })
 
+$("#clear").on("click", function() {
+    $(".results-body").empty();
+})
