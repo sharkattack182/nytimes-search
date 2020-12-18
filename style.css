@@ -1,16 +1,19 @@
 body {
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 10px;
+    margin-right: 10px;
     min-height: 100%;
+    height: fit-content;
 }
 
 h1 {
     background-color: navy;
     color: white;
     margin-bottom: 5vh;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     text-align: center;
+    font-size: large;
+    border-radius: 5px;
 }
 
 input, select {
@@ -34,3 +37,25 @@ p {
 .blue {
     font-style: bold;
 }
+
+.large {
+    display: inline-block;
+}
+.small {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .small {
+        display: inline-block;
+    }
+    .large {
+        display: none;
+    }
+    h1 {
+        font-size: small;
+    }
+    .header p {
+        padding-top: 10px;
+    }
+  }
