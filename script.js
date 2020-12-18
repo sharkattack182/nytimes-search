@@ -3,9 +3,34 @@ $("#search").on("click", function() {
     event.preventDefault();
     console.log("clicked");
 
+    var startYear = parseInt($(".start-year").val());
+    var endYear = parseInt($(".end-year").val());
+
+    var searchQuery = $(".search-query").val().trim();
+    console.log(searchQuery)
     // setting the api and query string for the ajax call
+    // if statement depending on the users reuest values
     var apiKey = "VMU7yTXM4dOt0QRT8qkBXND2EMSS6od6";
-    var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=" + apiKey;
+
+    console.log(jQuery.type(startYear));
+
+    if($(".start-year").val() == "" && $(".end-year").val() == "") {
+        console.log("no years selected");
+        var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchQuery + "&api-key=" + apiKey;
+    } else if ($(".start-year").val() == "") {
+        console.log("no start year");
+        var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchQuery + "&end_date=" + endYear + "1231&api-key=" + apiKey;
+    } else if ($(".end-year").val() == "") {
+        console.log("no end year");
+        var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchQuery + "&begin_date=" + startYear + "0101&api-key=" + apiKey;
+    } else {
+        console.log("all queries selected");
+        var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchQuery + "&begin_date=" + startYear + "0101&end_date=" + endYear + "1231&api-key=" + apiKey;
+    }
+    
+    // var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=" + apiKey;
+    // var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&begin_date=" + startYear + "0101&end_date=" + endYear + "1231&api-key=" + apiKey;
+    // https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&begin_date=20120101&end_date=20180101&api-key=
 
     // grabbing the number of articles requested by the user
     var numberQuery = $(".form-select").children("option:selected").val();
@@ -23,9 +48,6 @@ $("#search").on("click", function() {
         for (var i = 0; i < numberQuery; i++) {
             var article = docs[i];
             var numeral = i + 1;
-            console.log(numeral)
-
-            console.log(article)
 
             var newCard = $("<div>");
             newCard.attr("class", "card text-center result");
