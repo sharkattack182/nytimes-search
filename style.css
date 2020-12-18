@@ -25,3 +25,12 @@ p {
 .top-articles {
     margin-top: 20px;
 }
+
+.result {
+    margin-bottom: 10px;
+}
+
+.blue {
+
+    font-style: bold;
+}
