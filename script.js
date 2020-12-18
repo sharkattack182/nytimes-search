@@ -6,6 +6,17 @@ $("#search").on("click", function() {
     var startYear = parseInt($(".start-year").val());
     var endYear = parseInt($(".end-year").val());
 
+    if(startYear > 2020 || startYear < 1930) {
+        $(".start-year").val("")
+    }
+
+    
+    if(endYear > 2020 || endYear < 1930) {
+        $(".end-year").val("")
+    }
+
+
+
     var searchQuery = $(".search-query").val().trim();
     console.log(searchQuery)
     // setting the api and query string for the ajax call
