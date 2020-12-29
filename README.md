@@ -25,7 +25,5 @@ CSS <img src="https://progress-bar.dev/11">
 <img src="/imgs/full-results.PNG">
 
 ### Mobile
-<img src="/imgs/mobile-home.PNG">
-<br>
-<img src="/imgs/mobile-results.PNG">
+![](/imgs/mobile-home.PNG)  |  ![](/imgs/mobile-results.PNG) 
 
